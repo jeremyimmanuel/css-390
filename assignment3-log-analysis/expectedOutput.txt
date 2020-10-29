@@ -1,0 +1,36 @@
+Summary:
+total cookies in baseline =	14
+empty cookies in baseline =	2
+non-empty cookies in baseline =	12
+total cookies in test =	 14
+empty cookies in test =	 1
+non-empty cookies in test =	13
+non-empty cookies in baseline only = 	2
+non-empty cookies in test only = 	1
+non-empty cookies in both = 	12
+non-empty cookies in either = 	15
+Cookies with added segments: 4 / 19
+0	D012_122	1	['00000725s6g63wsdrgg6841rer4e6e15']
+1	D150_255	1	['00000062e064aaf40277135de48c95e2']
+2	D324_124	1	['00000725s6g63wsdrgg6841rer4e6e15']
+3	D999_132	1	['00000151f0s3si99vsh3e41ecibfsd4c']
+
+Cookies with missing segments: 3 / 19
+0	C222_321	1	['000008g3d5sgw48g33wg3w1g435134g5']
+1	D150_255	1	['0000001aa1098hw4nf9hchnw4i5f25hf']
+2	D_235	1	['0000021415352tgfwg33wsdrgg2453we']
+
+
+Segments with added cookies: 5 / 14
+0	0000001aa1098hw4nf9hchnw4i5f25hf	1	['FGFF_122']
+1	00000062e064aaf40277135de48c95e2	1	['D150_255']
+2	00000151f0s3si99vsh3e41ecibfsd4c	1	['D999_132']
+3	000002095gh0b513trh813b1e85161ge	1	['D913_212']
+4	00000725s6g63wsdrgg6841rer4e6e15	3	['D213_321', 'D012_122', 'D324_124']
+
+Segment with missing cookies: 5 / 14
+0	0000001aa1098hw4nf9hchnw4i5f25hf	1	['D150_255']
+1	00000062e064aaf40277135de48c95e2	1	['F90_C0']
+2	00000150e9v9whegfj4i9g900j752bde	2	['C239_128', 'D3359_9']
+3	0000021415352tgfwg33wsdrgg2453we	1	['D_235']
+4	000008g3d5sgw48g33wg3w1g435134g5	1	['C222_321']

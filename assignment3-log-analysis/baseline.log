@@ -1,0 +1,22 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/morrisb/.gradle/caches/modules-2/files-2.1/org.apache.logging.log4j/log4j-slf4j-impl/2.5/d1e34a4525e08873703fdaad6c6284f944f8ca8f/log4j-slf4j-impl-2.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/morrisb/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-simple/1.7.13/8f0d8b5bf0ff295162360a0a5ebb9c945bd2b685/slf4j-simple-1.7.13.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/morrisb/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-log4j12/1.7.5/6edffc576ce104ec769d954618764f39f0f0f10d/slf4j-log4j12-1.7.5.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/morrisb/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-log4j12/1.7.13/55517a839e93c29d8a6ce8d8504a3e124e3a5a2f/slf4j-log4j12-1.7.13.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.apache.logging.slf4j.Log4jLoggerFactory]
+ERROR StatusLogger No log4j2 configuration file found. Using default configuration: logging only errors to the console.
+18:53:34.801 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 0000001aa1098hw4nf9hchnw4i5f25hf ==> [D150_255, D999_132, F6522_212]
+18:53:34.802 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 00000fh7w34nt4t3w4789ngnvsdg35cd ==> [FD250_122, T150_122, D124_723]
+18:53:34.802 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 00000062e064aaf40277135de48c95e2 ==> [F90_C0]
+18:53:34.802 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 0000010jrrfiem28302rf203i2a2615c ==> [D642_111, D150_255]
+18:53:34.803 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 00000132e207c75cf46da8c840bf7b78 ==> [D150_255]
+18:53:34.803 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 00000150e9v9whegfj4i9g900j752bde ==> [C239_128, D3359_9]
+18:53:34.803 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 00000151f0s3si99vsh3e41ecibfsd4c ==> [C239_124, D213_123]
+18:53:34.803 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 000001965135468we6431f4612f316fw ==> [C24_23, D1FF80_255]
+18:53:34.803 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 000001ce6917ysidvd8s634s631906s4 ==> [D324_124, D_235]
+18:53:34.803 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 000002095gh0b513trh813b1e85161ge ==> []
+18:53:34.804 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 00000725s6g63wsdrgg6841rer4e6e15 ==> []
+18:53:34.804 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 000003h0hvdpoi31321536fswe235wg9 ==> [D39F_0]
+18:53:34.804 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 000008g3d5sgw48g33wg3w1g435134g5 ==> [C222_321, D012_122, D324_124]
+18:53:34.804 [main] ERROR com.audiencescience.app.smac.functional.EvaluateProfiles - evaluated: 0000021415352tgfwg33wsdrgg2453we ==> [C222_321, D_235]
