@@ -8,7 +8,7 @@ Morris Bernstein
 
 import sys
 
-#get the Segments Dictionary and Cookie Dictionary
+# get the Segmentest_segment_dict Dictionary and Cookie Dictionary
 def getLogAnalysis(filename: str):
     f = open(filename)
     cDict = {}
@@ -21,17 +21,17 @@ def getLogAnalysis(filename: str):
             cCount += 1
             lArr = line.split('==>')
             cookie = lArr[0].split(':')[-1][1:-1]
-            segments = lArr[-1][1:-1]
+            segmentest_segment_dict = lArr[-1][1:-1]
 
             segArr = []
-            if segments != '[]':
+            if segmentest_segment_dict != '[]':
                 csegCount += 1
-                segArr = segments.split(',')
+                segArr = segmentest_segment_dict.split(',')
                 segArr = [seg.strip(' ') for seg in segArr]
                 segArr = [seg.strip('[') for seg in segArr]
                 segArr = [seg.strip(']') for seg in segArr]
-                
-            
+
+
             for seg in segArr:
                 #add segment key if doesn't exist in sDict
                 if seg not in sDict.keys():
@@ -61,7 +61,7 @@ def getEmpty(d: dict) -> list:
 
 def getDifferent(checkHere, fromHere):
     ans = {}
-    
+
     for k in checkHere.keys():
         arr = []
         if k in fromHere.keys():
@@ -69,7 +69,7 @@ def getDifferent(checkHere, fromHere):
                 if val not in fromHere[k]: #check if val exist in the other array
                     arr.append(val)
         if len(arr) > 0:
-            ans.update({k: arr}) 
+            ans.update({k: arr})
     return ans
 
 
@@ -84,69 +84,69 @@ def stringDict(d):
 
 
 def getReport(baseline: str, test: str):
-    bC, bS = getLogAnalysis(baseline)
-    tC, tS = getLogAnalysis(test)
+    baseline_cookie_dict, baseline_segment_dict = getLogAnalysis(baseline)
+    test_cookie_dict, test_segment_dict = getLogAnalysis(test)
 
-    b_emptyC, t_emptyC = getEmpty(bC), getEmpty(tC)
+    b_emptyC, t_emptyC = getEmpty(baseline_cookie_dict), getEmpty(test_cookie_dict)
 
-    #count empty cookie only in baseline
+    # count empty cookie only in baseline
     b_ecCount = 0
     for c in b_emptyC:
         if c not in t_emptyC:
             b_ecCount += 1
 
-    #count empty cookie only in test
+    # count empty cookie only in test
     t_ecCount = 0
     for c in t_emptyC:
         if c not in b_emptyC:
             t_ecCount += 1
-    
-    eCBoth = (len(tC.keys()) - len(t_emptyC))  - t_ecCount
+
+    eCBoth = (len(test_cookie_dict.keys()) - len(t_emptyC)) - t_ecCount
     eCEither = eCBoth + t_ecCount + b_ecCount
 
-    #print('%d = %d' % (countEmpty(bC), len(b_emptyC)))
-    #print('%d = %d' % (countEmpty(tC), len(t_emptyC)))
+    # print('%d = %d' % (countEmpty(baseline_cookie_dict), len(b_emptyC)))
+    # print('%d = %d' % (countEmpty(test_cookie_dict), len(t_emptyC)))
 
-    summary = 'Summary:' 
+    summary = 'Summary:'
 
-    summary += '\ntotal cookies in baseline =\t%d' % len(bC.keys()) 
-    summary += '\nempty cookies in baseline =\t%d' % len(b_emptyC) 
-    summary += '\nnon-empty cookies in baseline =\t%d' % (len(bC.keys()) - len(b_emptyC))  
-    
-    summary += '\ntotal cookies in test =\t %d' % len(tC.keys())
+    summary += '\ntotal cookies in baseline =\t%d' % len(baseline_cookie_dict.keys())
+    summary += '\nempty cookies in baseline =\t%d' % len(b_emptyC)
+    summary += '\nnon-empty cookies in baseline =\t%d' % (len(baseline_cookie_dict.keys()) - len(b_emptyC))
+
+    summary += '\ntotal cookies in test =\t %d' % len(test_cookie_dict.keys())
     summary += '\nempty cookies in test =\t %d' % len(t_emptyC)
-    summary += '\nnon-empty cookies in test =\t%d' % (len(tC.keys()) - len(t_emptyC))  
-    
+    summary += '\nnon-empty cookies in test =\t%d' % (len(test_cookie_dict.keys()) - len(t_emptyC))
+
     summary += '\nnon-empty cookies in baseline only = \t%d' % b_ecCount
     summary += '\nnon-empty cookies in test only = \t%d' % t_ecCount
     summary += '\nnon-empty cookies in both = \t%d' % eCBoth
     summary += '\nnon-empty cookies in either = \t%d\n' % eCEither
 
 
-    
-    #addedSegment 
-    segmentPlus = getDifferent(tS, bS)
-    summary += ('Cookies with added segments: %d / %d\n') % (len(segmentPlus), len(bS))
+
+    #addedSegment
+    segmentPlus = getDifferent(test_segment_dict, baseline_segment_dict)
+    summary += ('Cookies with added segmentest_segment_dict: %d / %d\n') % (len(segmentPlus), len(baseline_segment_dict))
     summary += stringDict(segmentPlus)
 
-    #missingSegment     
-    segmentMinus = getDifferent(bS, tS)
-    summary += ('Cookies with missing segments: %d / %d\n') % (len(segmentMinus), len(bS))
+    #missingSegment
+    segmentMinus = getDifferent(baseline_segment_dict, test_segment_dict)
+    summary += ('Cookies with missing segmentest_segment_dict: %d / %d\n') % (len(segmentMinus), len(baseline_segment_dict))
     summary += stringDict(segmentMinus)
-    
+
     #added cookies
-    cookiePlus = getDifferent(tC, bC)
-    summary += '\nSegments with added cookies: %d / %d\n' % (len(cookiePlus), len(tC))
+    cookiePlus = getDifferent(test_cookie_dict, baseline_cookie_dict)
+    summary += '\nSegmentest_segment_dict with added cookies: %d / %d\n' % (len(cookiePlus), len(test_cookie_dict))
     summary += stringDict(cookiePlus)
-    
-    
+
+
     #missing cookies
-    cookieMinus = getDifferent(bC, tC)
-    summary += 'Segment with missing cookies: %d / %d\n' % (len(cookieMinus), len(tC))
+    cookieMinus = getDifferent(baseline_cookie_dict, test_cookie_dict)
+    summary += 'Segment with missing cookies: %d / %d\n' % (len(cookieMinus), len(test_cookie_dict))
     summary += stringDict(cookieMinus)
- 
-    #print(bS)
-    #print(tS)
+
+    #print(baseline_segment_dict)
+    #print(test_segment_dict)
     print(summary)
 
 
@@ -162,6 +162,4 @@ testFile = 'test.log'
 baselineFile = 'baseline.log'
 
 
-#added cookies 
-
-
+#added cookies
