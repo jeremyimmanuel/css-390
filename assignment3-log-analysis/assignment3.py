@@ -33,21 +33,21 @@ def getLogAnalysis(filename: str):
 
 
             for seg in segArr:
-                #add segment key if doesn't exist in sDict
+                # add segment key if doesn't exist in sDict
                 if seg not in sDict.keys():
                     sDict.update({seg: []})
                 sDict[seg].append(cookie)
-            #print(segArr)
+            # print(segArr)
             c_seg = {cookie: segArr}
             cDict.update(c_seg)
-    #print(cDict)
+    # print(cDict)
     f.close()
     return cDict, sDict
 
 def countEmpty(d: dict) -> int:
     ans = 0
-    for k in d.keys():
-        if len(d[k]) == 0:
+    for key in d.keys():
+        if len(d[key]) == 0:
             ans += 1
     return ans
 
@@ -91,18 +91,18 @@ def getReport(baseline: str, test: str):
 
     # count empty cookie only in baseline
     b_ecCount = 0
-    for c in b_emptyC:
-        if c not in t_emptyC:
+    for cookie in b_emptyC:
+        if cookie not in t_emptyC:
             b_ecCount += 1
 
     # count empty cookie only in test
     t_ecCount = 0
-    for c in t_emptyC:
-        if c not in b_emptyC:
+    for cookie in t_emptyC:
+        if cookie not in b_emptyC:
             t_ecCount += 1
 
-    eCBoth = (len(test_cookie_dict.keys()) - len(t_emptyC)) - t_ecCount
-    eCEither = eCBoth + t_ecCount + b_ecCount
+    non_empty_cookies_both = (len(test_cookie_dict.keys()) - len(t_emptyC)) - t_ecCount
+    non_empty_cookies_either = non_empty_cookies_both + t_ecCount + b_ecCount
 
     # print('%d = %d' % (countEmpty(baseline_cookie_dict), len(b_emptyC)))
     # print('%d = %d' % (countEmpty(test_cookie_dict), len(t_emptyC)))
@@ -119,39 +119,39 @@ def getReport(baseline: str, test: str):
 
     summary += '\nnon-empty cookies in baseline only = \t%d' % b_ecCount
     summary += '\nnon-empty cookies in test only = \t%d' % t_ecCount
-    summary += '\nnon-empty cookies in both = \t%d' % eCBoth
-    summary += '\nnon-empty cookies in either = \t%d\n' % eCEither
+    summary += '\nnon-empty cookies in both = \t%d' % non_empty_cookies_both
+    summary += '\nnon-empty cookies in either = \t%d\n' % non_empty_cookies_either
 
 
 
-    #addedSegment
+    # addedSegment
     segmentPlus = getDifferent(test_segment_dict, baseline_segment_dict)
     summary += ('Cookies with added segmentest_segment_dict: %d / %d\n') % (len(segmentPlus), len(baseline_segment_dict))
     summary += stringDict(segmentPlus)
 
-    #missingSegment
+    # missingSegment
     segmentMinus = getDifferent(baseline_segment_dict, test_segment_dict)
     summary += ('Cookies with missing segmentest_segment_dict: %d / %d\n') % (len(segmentMinus), len(baseline_segment_dict))
     summary += stringDict(segmentMinus)
 
-    #added cookies
+    # added cookies
     cookiePlus = getDifferent(test_cookie_dict, baseline_cookie_dict)
     summary += '\nSegmentest_segment_dict with added cookies: %d / %d\n' % (len(cookiePlus), len(test_cookie_dict))
     summary += stringDict(cookiePlus)
 
 
-    #missing cookies
+    # missing cookies
     cookieMinus = getDifferent(baseline_cookie_dict, test_cookie_dict)
     summary += 'Segment with missing cookies: %d / %d\n' % (len(cookieMinus), len(test_cookie_dict))
     summary += stringDict(cookieMinus)
 
-    #print(baseline_segment_dict)
-    #print(test_segment_dict)
+    # print(baseline_segment_dict)
+    # print(test_segment_dict)
     print(summary)
 
 
-#testFile = 'evaluator-integration.log'
-#baselineFile = 'evaluator-integration-baseline.log'
+# testFile = 'evaluator-integration.log'
+# baselineFile = 'evaluator-integration-baseline.log'
 
 if __name__ == '__main__':
     baseline = sys.argv[1]
